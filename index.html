@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="style.css">
     <title>Controle pessoal de finanças</title>
 </head>
 <body>
-    <h2>Controle de finanças</h2>
+
     <form id="formsalvar">
+        <h2>Controle de finanças</h2>
         <label for="salario">Salário:</label>
         <input type="number" id="salario" required>
         <br>
 
         <h3>Informações das despesas:</h3>
         <label for="data">Data:</label>
-        <input type="number" id="data" required>
+        <input type="date" id="data" required>
         <br>
         <label for="nome">Nome:</label>
         <input type="text" id="nome" required>
@@ -29,10 +31,11 @@
     <h2>Lista de despesas</h2>
     <ul id="output"> </ul>
 
-
-    <div><h2>Saldo final</h2><div id="saldofinal"><ul></ul></div></div>
-
     
+    <div><h2>Saldo final</h2><div id="saldofinal"></div></div>
+
+
     <script type="text/javascript" src="js/script.js"></script>
+
 </body>
 </html>
