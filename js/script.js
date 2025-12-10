@@ -18,7 +18,10 @@ document.getElementById("formsalvar").addEventListener("submit", function(event)
     /**adicionar o aluno no arquivo do local storage */
     localStorage.setItem('listagem', JSON.stringify(lista_despesas))
 
-   document.getElementById('formsalvar').reset()
+    document.getElementById('data').value = "";
+    document.getElementById('nome').value = "";
+    document.getElementById('valor').value = "";
+
 
    exibir_despesas()
 })
@@ -33,4 +36,34 @@ for(let i=0;i<lista_despesas.length;i++){
     li.textContent='Data:'+lista_despesas[i].data+' Nome:'+lista_despesas[i].nome+' Valor:'+lista_despesas[i].valor
     output.appendChild(li)
 }
+
+    var salario = document.getElementById("salario").value;
+    localStorage.setItem("salario", salario);
+
+
+
+    function exibir_resumo() {
+    let salario = Number(localStorage.getItem("salario")) || 0;
+    let lista_despesas = JSON.parse(localStorage.getItem('listagem')) || [];
+
+    let total = 0;
+    for (let i = 0; i < lista_despesas.length; i++) {
+        total += Number(lista_despesas[i].valor);
+    }
+
+    let saldo = salario - total;
+
+    document.getElementById("saldofinal").innerHTML =
+    "Salário: R$ " + salario + "<br>" +
+    "Total de despesas: R$ " + total + "<br>" +
+    "Saldo final: R$ " + saldo;
+
+}
+
+
+
+    document.getElementById("btnResumo").addEventListener("click", function() {
+    exibir_resumo();
+});
+
 }
