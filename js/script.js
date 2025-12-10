@@ -7,21 +7,20 @@ document.getElementById("formsalvar").addEventListener("submit", function(event)
     var data=document.getElementById("data").value
     var nome=document.getElementById("nome").value
     var valor=document.getElementById("valor").value
-    /**declara o objeto com os atributos nome e idade e atribui os dados q estao nas variaveis acima nome eidade */
+    /**declara o objeto com os atributo data nome e valor e atribui os dados q estao nas variaveis acima nome eidade */
     var despesa={data:data, nome:nome ,valor:valor}
 
-    /**criar lista de alunos, carregar os alunos pré existentes ou carregar uma lista vazia */
+    /**criar lista de despesas, carregar os despesas pré existentes ou carregar uma lista vazia */
     var lista_despesas= JSON.parse(localStorage.getItem('listagem')) || []
-    /**inserir o aluno na lista */
+    /**inserir a despesa na lista */
     lista_despesas.push(despesa)
 
-    /**adicionar o aluno no arquivo do local storage */
+    /**adicionar o aluno no arquivo do local storage      stringfy de objt para texto*/    
     localStorage.setItem('listagem', JSON.stringify(lista_despesas))
 
     document.getElementById('data').value = "";
     document.getElementById('nome').value = "";
     document.getElementById('valor').value = "";
-
 
    exibir_despesas()
 })
@@ -59,11 +58,13 @@ for(let i=0;i<lista_despesas.length;i++){
     "Saldo final: R$ " + saldo;
 
 }
-
-
-
     document.getElementById("btnResumo").addEventListener("click", function() {
     exibir_resumo();
+});
+
+    document.getElementById("btnLimpar").addEventListener("click", function() {
+    localStorage.removeItem("listagem");
+    exibir_despesas();
 });
 
 }
